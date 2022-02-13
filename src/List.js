@@ -3,11 +3,10 @@ import React from "react";
 
 const LANGUAGES = ["JavaScript", "C++", "PHP", "Java", "Ruby", "GO"];
 
-const List = (props) => {
-  const title = props.title;
+const List = () => {
+
   return (
     <div>
-      <h4>{title}</h4>
       {LANGUAGES.map((lang, index) => {
         return <div key={index}>{lang}</div>;
       })}
