@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import {Button} from './compoents/button';
+import {TabBodyContainer} from './compoents/tab-body-container';
 import styled from 'styled-components';
 
 const Form = (props) => {
@@ -16,8 +17,7 @@ const Form = (props) => {
   };
 
   return (
-    <Container>
-      <h4>Add new language</h4>
+    <TabBodyContainer title="Add new language">
       <form onSubmit={submitForm}>
         <div>
           <Label>Language</Label>
@@ -27,13 +27,10 @@ const Form = (props) => {
           <FormButton>Add</FormButton>
         </ButtonContainer>
       </form>
-    </Container>
+    </TabBodyContainer>
   );
 };
 
-const Container = styled.div`
-  padding: 12px 64px;
-`
 const Label = styled.label`
   display: flex;
   color:#757575;
