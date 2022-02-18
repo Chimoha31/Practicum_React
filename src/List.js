@@ -1,6 +1,14 @@
-import React from "react";
+import React, {useEffect} from "react";
 
 const List = (props) => {
+  useEffect(() => {
+    console.log("List.js: useEffect");
+
+    return () => {
+      console.log("List.js: useEffect: unmount")
+    }
+  });
+
   const langs = props.langs;
   return (
     <div>
