@@ -1,24 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import List from "./List";
 import Form from "./Form";
 import {getLanguages} from './const/languages';
+import {withLoading} from './hoc/withLoading';
 import styled from 'styled-components';
 
 
-function App() {
+function App({ data }) {
   const [tab, setTab] = useState("list");
-  const [langs, setLangs] = useState([]);
+  const [langs, setLangs] = useState(data);
   
-  useEffect(() => {
-    console.log('App.js: useEffect'); 
-    fetchLanguages();
-  }, []);
   
-  const fetchLanguages = async () => {
-    const languages = await getLanguages();
-    setLangs(languages);
-  }
-  
+
   const addLang = (lang) => {
     setLangs([...langs, lang]);
     setTab('list');
@@ -57,4 +50,4 @@ const HeaderLi = styled.li`
   cursor: pointer;
   border-bottom: ${props => props.focused ? '2px solid #f44336': 'none'}
 `
-export default App;
+export default withLoading(App, getLanguages);
