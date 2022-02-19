@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 const modalRoot = document.getElementById('modal-root');
 
-const Modal = (props) => {
+export const Modal = (props) => {
   const children = props.children;
   return ReactDOM.createPortal (
     <Container>{children}</Container>, 
@@ -23,5 +23,3 @@ const Container = styled.div`
   background-color: rgba(0,0,0,0.5);
 
 `
-
-export default Modal;

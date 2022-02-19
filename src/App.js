@@ -3,7 +3,7 @@ import List from "./List";
 import Form from "./Form";
 import {getLanguages} from './const/languages';
 import {withLoading} from './hoc/withLoading';
-import Modal from './compoents/Modal';
+import {Modal} from './compoents/modal';
 import styled from 'styled-components';
 
 
@@ -28,7 +28,8 @@ function App({ data }) {
       </Header>
 
       {tab === "list" ? <List langs={langs}/> : <Form onAddLang={addLang} />}
-      <Modal />
+      {/* modalがちゃんと効いているか見ただけ。消さないと、ずっとmodal状態 */}
+      {/* <Modal /> */}
     </div>
   );
 }

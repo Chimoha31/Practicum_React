@@ -1,15 +1,22 @@
 import React, { useState } from "react";
-import {Button} from './compoents/button';
-import {TabBodyContainer} from './compoents/tab-body-container';
-import styled from 'styled-components';
+import { Button } from "./compoents/button";
+import { TabBodyContainer } from "./compoents/tab-body-container";
+import FormModal from "./FormModal";
+import styled from "styled-components";
 
 const Form = (props) => {
+  // props
   const onAddLang = props.onAddLang;
-  const [text, setText] = useState("");
 
+  // useState
+  const [text, setText] = useState("");
+  const [showModal, setShowModal] = useState(false);
+
+  // event系
   const submitForm = (e) => {
     e.preventDefault();
-    onAddLang(text);
+    setShowModal(true);
+    // onAddLang(text);
   };
 
   const changeTextHandler = (e) => {
@@ -27,27 +34,33 @@ const Form = (props) => {
           <FormButton>Add</FormButton>
         </ButtonContainer>
       </form>
+      {showModal && 
+        <FormModal
+          confirm={() => onAddLang(text)}
+          cancel={() => setShowModal(false)}
+        />
+      }
     </TabBodyContainer>
   );
 };
 
 const Label = styled.label`
   display: flex;
-  color:#757575;
+  color: #757575;
   font-size: 14px;
   font-weight: bold;
-`
+`;
 const Input = styled.input`
   border-radius: 3px;
   padding: 4px 8px;
   border: 1px solid black;
-`
+`;
 const ButtonContainer = styled.div`
-margin-top: 24px;
-`
+  margin-top: 24px;
+`;
 const FormButton = styled(Button)`
   width: 120px;
   background-color: pink;
-`
+`;
 
 export default Form;
