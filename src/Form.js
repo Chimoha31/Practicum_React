@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Button } from "./compoents/button";
 import { TabBodyContainer } from "./compoents/tab-body-container";
 import FormModal from "./FormModal";
+import Hint from './Hint';
 import styled from "styled-components";
 
 const Form = (props) => {
@@ -29,6 +30,7 @@ const Form = (props) => {
         <div>
           <Label>Language</Label>
           <Input type="text" value={text} onChange={changeTextHandler} />
+          <Hint />
         </div>
         <ButtonContainer>
           <FormButton>Add</FormButton>
