@@ -62,7 +62,7 @@ const ButtonContainer = styled.div`
 `;
 const FormButton = styled(Button)`
   width: 120px;
-  background-color: pink;
+  background-color: orange;
 `;
 
 export default Form;

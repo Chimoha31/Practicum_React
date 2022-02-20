@@ -1,8 +1,14 @@
-import React, {useState} from "react";
+import React, {useState, useRef, useEffect} from "react";
 import styled from "styled-components";
 
 const Hint = () => {
   const [isFocus, setIsFocus] = useState(false);
+
+  const ref = useRef(null);
+
+ useEffect(() => {
+    if(ref.current) ref.current.focus();
+  });
 
   // const clickHandler = () => {
   //   isFocus ? setIsFocus(false) : setIsFocus(true);
@@ -12,8 +18,8 @@ const Hint = () => {
     <HintContainer>
       {/* <HintInner onClick={clickHandler}>?</HintInner> */}
       <HintInner onClick={() => setIsFocus(true)}>?</HintInner>
-      {isFocus && <PopupContainer onBlur={() => setIsFocus(false)} tabIndex={0}>Name of language</PopupContainer>}
-    </HintContainer>
+      {isFocus && <PopupContainer ref={ref} onBlur={() => setIsFocus(false)} tabIndex={0}>Name of language</PopupContainer>}
+    </HintContainer>//refを使わないとonBlurだけでは、空白をクリックした時にpopupが消えない
   );
 };
 
@@ -21,7 +27,6 @@ const HintContainer = styled.div`
   position: relative;
   display: inline-flex;
   margin-left: 12px;
-  // border: 1px solid red;
 `;
 
 const HintInner = styled.div`
