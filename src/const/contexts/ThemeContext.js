@@ -6,11 +6,9 @@ export const THEMES = {
     backgroundColor: 'white',
   },
   dark: {
-    color: white,
+    color: 'white',
     backgroundColor: '#222222',
   }
 }
 
-const ThemeContext = React.createContext([THEMES.dark, () => {}]);
-
-export default ThemeContext;
+export const ThemeContext = React.createContext([THEMES.dark, () => {}]);
