@@ -1,12 +1,15 @@
-import React from "react";
+import React, {useContext} from "react";
 import { Modal } from "./compoents/modal";
 import { Button } from "./compoents/button";
+import {ThemeContext, THEMES} from './const/contexts/ThemeContext';
 import styled from "styled-components";
 
 const FormModal = ({ confirm, cancel }) => {
+  const [theme] = useContext(ThemeContext);
+
   return (
     <Modal>
-      <Container>
+      <Container theme={theme}>
         <div>Do you really add it?</div>
         <ButtonWrapper>
           <Button onClick={cancel}>Cancel</Button>
@@ -21,7 +24,9 @@ const Container = styled.div`
   width: 240px;
   border-radius: 10px;
   padding: 24px 36px;
-  background-color: #fff;
+  color: ${({theme}) => theme.color}
+  background-color: ${({theme}) => theme.backgroundColor}
+  border: ${({theme}) => theme === THEMES.dark ? '2px solid white' : 'none'}
 `;
 
 const ButtonWrapper = styled.div`
